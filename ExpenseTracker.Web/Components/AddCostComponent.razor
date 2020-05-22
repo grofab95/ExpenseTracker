@@ -1,0 +1,103 @@
+﻿@if (_costs != null && _categories != null && _names != null)
+{
+    <RadzenCard Style="width: 550px; margin-top: 60px;">
+        <RadzenFieldset Text="Dodaj wydatek ..." Style="margin-top: 10px">
+
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="col-md-7">
+                    <RadzenLabel Text="Dodaj wydatek na podstawie zapisanych:" />
+                </div>
+                <div class="col-md-5">
+                    <RadzenCheckBox TValue="bool" @bind-Value="_useExistCost" Change="@(() => ChangeCostTypeHandler())" />
+                </div>
+            </div>
+
+            <hr />
+
+            @if (_useExistCost)
+            {
+                <div class="row" style="margin-bottom: 5px;">
+                    <div class="col-md-4">
+                        <RadzenLabel Text="Lista wydatków:" />
+                    </div>
+                    <div class="col-md-7" style="width: 100%">
+                        <RadzenDropDown TValue="Cost" Data="@_costs" TextProperty="FullName"
+                                        FilterOperator="StringFilterOperator.Contains" AllowFiltering="true" 
+                                        FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
+                                        Placeholder="Wybierz wydatek..."
+                                        Change="@(() => ChangeCostTypeHandler())"
+                                        Style="margin-bottom: 1px;" @bind-Value="_selectedCost" />
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="row">
+                    <div class="col-4">
+                        <p>Kategoria:</p>
+                    </div>
+                    <div class="col-6">
+                        @if (_isNewCategory)
+                        {
+                            <div>
+                                <RadzenTextBox @bind-Value="_newCategory" Style="margin-bottom: 5px; width: 202px;" />
+                            </div>
+                        }
+                        else
+                        {
+                            <div>
+                                <RadzenDropDown TValue="Category" Data="@_categories" TextProperty="Name"
+                                                Placeholder="Wybierz kategorie..."
+                                                Style="margin-bottom: 5px" @bind-Value="_selectedCategory" />
+                            </div>
+                        }
+                    </div>
+                    <div class="col-2">
+                        <RadzenCheckBox TValue="bool" @bind-Value="_isNewCategory" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-4">
+                        <p>Nazwa:</p>
+                    </div>
+                    <div class="col-6">
+                        <RadzenTextBox @bind-Value="_newName" Style="margin-bottom: 11px; width: 202px;" />
+                    </div>
+                </div>
+            }
+
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="col-md-4">
+                    <p>Wartość:</p>
+                </div>
+                <div class="col-md-8">
+                    <RadzenNumeric @bind-Value="_amount" Name="Amount" Min="1" Max="99999" Style="width: 202px;" />
+                </div>
+            </div>
+
+            <div>
+                <div class="row mx-auto" style="margin-bottom: 5px;">
+                    <RadzenLabel Text="Opis kosztu:" Style="margin: auto;" />
+                </div>
+
+                <div class="row mx-auto" style="margin-bottom: 5px;">
+                    <RadzenTextArea @bind-Value="@_description" Rows="14" Style="margin: auto; width: 100%;" />
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <RadzenButton ButtonType="ButtonType.Submit" Text="Dodaj Koszt" Click="@(async() => await AddCost())"
+                              ButtonStyle="ButtonStyle.Light" Style="margin: auto; display: block;" />
+            </div>
+
+        </RadzenFieldset>
+    </RadzenCard>
+}
+else
+{
+    <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+}
+

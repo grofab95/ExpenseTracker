@@ -1,0 +1,98 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30104.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpenseTracker.Common", "ExpenseTracker\ExpenseTracker.Common.csproj", "{73255A49-2C2C-4E26-8532-A70DE6DDB60E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{050C0369-5116-4A7F-8713-4A6533661D1B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpenseTracker.Domain", "ExpenseTracker.Domain\ExpenseTracker.Domain.csproj", "{89E7EA25-2764-42BC-81C1-0D0BBACF76D1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpenseTracker.SQL", "ExpenseTracker.SQL\ExpenseTracker.SQL.csproj", "{2E4E3DEC-A824-4578-9D07-BC6C10A68A9A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpenseTracker.API", "ExpenseTracker.API\ExpenseTracker.API.csproj", "{EDD1A247-16CD-4957-862C-BBE05717E854}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpenseTracker.ConsoleApp", "ExpenseTracker.ConsoleApp\ExpenseTracker.ConsoleApp.csproj", "{49211D64-875E-45E9-B466-6266F802A4DB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpenseTracker.Web", "ExpenseTracker.Web\ExpenseTracker.Web.csproj", "{C81F3550-B734-45C1-8CB7-57E305DFE75A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpenseTracker.MailGate", "ExpenseTracker.MailGate\ExpenseTracker.MailGate.csproj", "{1361E0E1-7D92-427A-9F0F-26051817AA7B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpenseTracker.Statistics", "ExpenseTracker.Statistics\ExpenseTracker.Statistics.csproj", "{1172E191-27AC-400E-8DC0-B7C5B6D023EA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mobile", "mobile", "{22E71705-10D6-457D-9DF8-3551FBF765BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpenseTracker.MobileApp.Android", "ExpenseTracker.MobileApp\ExpenseTracker.MobileApp.Android\ExpenseTracker.MobileApp.Android.csproj", "{6D1775D8-BEE5-4F8A-875E-B22B9500A594}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpenseTracker.MobileApp", "ExpenseTracker.MobileApp\ExpenseTracker.MobileApp\ExpenseTracker.MobileApp.csproj", "{B2358A82-AD14-45D8-AB87-4C44FCD1846F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{73255A49-2C2C-4E26-8532-A70DE6DDB60E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73255A49-2C2C-4E26-8532-A70DE6DDB60E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73255A49-2C2C-4E26-8532-A70DE6DDB60E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73255A49-2C2C-4E26-8532-A70DE6DDB60E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89E7EA25-2764-42BC-81C1-0D0BBACF76D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89E7EA25-2764-42BC-81C1-0D0BBACF76D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89E7EA25-2764-42BC-81C1-0D0BBACF76D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89E7EA25-2764-42BC-81C1-0D0BBACF76D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E4E3DEC-A824-4578-9D07-BC6C10A68A9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E4E3DEC-A824-4578-9D07-BC6C10A68A9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E4E3DEC-A824-4578-9D07-BC6C10A68A9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E4E3DEC-A824-4578-9D07-BC6C10A68A9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDD1A247-16CD-4957-862C-BBE05717E854}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDD1A247-16CD-4957-862C-BBE05717E854}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDD1A247-16CD-4957-862C-BBE05717E854}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDD1A247-16CD-4957-862C-BBE05717E854}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49211D64-875E-45E9-B466-6266F802A4DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49211D64-875E-45E9-B466-6266F802A4DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49211D64-875E-45E9-B466-6266F802A4DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49211D64-875E-45E9-B466-6266F802A4DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C81F3550-B734-45C1-8CB7-57E305DFE75A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C81F3550-B734-45C1-8CB7-57E305DFE75A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C81F3550-B734-45C1-8CB7-57E305DFE75A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C81F3550-B734-45C1-8CB7-57E305DFE75A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1361E0E1-7D92-427A-9F0F-26051817AA7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1361E0E1-7D92-427A-9F0F-26051817AA7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1361E0E1-7D92-427A-9F0F-26051817AA7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1361E0E1-7D92-427A-9F0F-26051817AA7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1172E191-27AC-400E-8DC0-B7C5B6D023EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1172E191-27AC-400E-8DC0-B7C5B6D023EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1172E191-27AC-400E-8DC0-B7C5B6D023EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1172E191-27AC-400E-8DC0-B7C5B6D023EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D1775D8-BEE5-4F8A-875E-B22B9500A594}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D1775D8-BEE5-4F8A-875E-B22B9500A594}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D1775D8-BEE5-4F8A-875E-B22B9500A594}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{6D1775D8-BEE5-4F8A-875E-B22B9500A594}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D1775D8-BEE5-4F8A-875E-B22B9500A594}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D1775D8-BEE5-4F8A-875E-B22B9500A594}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{B2358A82-AD14-45D8-AB87-4C44FCD1846F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2358A82-AD14-45D8-AB87-4C44FCD1846F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2358A82-AD14-45D8-AB87-4C44FCD1846F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2358A82-AD14-45D8-AB87-4C44FCD1846F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{73255A49-2C2C-4E26-8532-A70DE6DDB60E} = {050C0369-5116-4A7F-8713-4A6533661D1B}
+		{89E7EA25-2764-42BC-81C1-0D0BBACF76D1} = {050C0369-5116-4A7F-8713-4A6533661D1B}
+		{2E4E3DEC-A824-4578-9D07-BC6C10A68A9A} = {050C0369-5116-4A7F-8713-4A6533661D1B}
+		{EDD1A247-16CD-4957-862C-BBE05717E854} = {050C0369-5116-4A7F-8713-4A6533661D1B}
+		{49211D64-875E-45E9-B466-6266F802A4DB} = {050C0369-5116-4A7F-8713-4A6533661D1B}
+		{C81F3550-B734-45C1-8CB7-57E305DFE75A} = {050C0369-5116-4A7F-8713-4A6533661D1B}
+		{1361E0E1-7D92-427A-9F0F-26051817AA7B} = {050C0369-5116-4A7F-8713-4A6533661D1B}
+		{1172E191-27AC-400E-8DC0-B7C5B6D023EA} = {050C0369-5116-4A7F-8713-4A6533661D1B}
+		{22E71705-10D6-457D-9DF8-3551FBF765BA} = {050C0369-5116-4A7F-8713-4A6533661D1B}
+		{6D1775D8-BEE5-4F8A-875E-B22B9500A594} = {22E71705-10D6-457D-9DF8-3551FBF765BA}
+		{B2358A82-AD14-45D8-AB87-4C44FCD1846F} = {22E71705-10D6-457D-9DF8-3551FBF765BA}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7B554816-707E-461B-BCA4-84AF2153A74A}
+	EndGlobalSection
+EndGlobal
