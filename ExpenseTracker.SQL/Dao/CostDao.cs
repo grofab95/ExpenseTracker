@@ -24,6 +24,12 @@ namespace ExpenseTracker.SQL.Dao
         {
             try
             {
+                if (cost.Name?.Value == null)
+                    throw new Exception("Nie wpisano nazwy kosztu.");
+
+                if (cost.Category?.Name == null)
+                    throw new Exception("Nie wybrano kategorii.");
+
                 if (cost.Amount < 1)
                     throw new Exception("Nie podano wartości kosztu.");
 
@@ -38,6 +44,9 @@ namespace ExpenseTracker.SQL.Dao
 
         public bool IsCostExit(Cost cost)
         {
+            if (cost.Category?.Name == null || cost.Name?.Value == null)
+                return false;
+
             return _context.Costs.Any(x => 
                 x.Name.Value.ToLower() == cost.Name.Value.ToLower() && 
                 x.Category.Name.ToLower() == cost.Category.Name.ToLower());

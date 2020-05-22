@@ -28,6 +28,7 @@ namespace ExpenseTracker.Web.Components
 
         private bool _useExistCost = true;
         private bool _isNewCategory = false;
+        private bool _disabled = false;
 
         private string _description;
         private string _newName = null; 
@@ -90,6 +91,14 @@ namespace ExpenseTracker.Web.Components
             }
         }
 
+        private void PrepareForm()
+        {
+            _disabled = true;
+            StateHasChanged();
+
+            var task = Task.Run(async () => await AddCost());
+        }
+
         private async Task AddCost()
         {
             try
@@ -140,6 +149,7 @@ namespace ExpenseTracker.Web.Components
             catch (Exception ex)
             {
                 Logger.Log<AddCostComponent>(ex);
+                _disabled = false;
 
                 await ShowNotification(new NotificationMessage
                 {

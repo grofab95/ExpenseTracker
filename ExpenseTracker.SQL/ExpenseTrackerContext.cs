@@ -16,6 +16,7 @@ namespace ExpenseTracker.SQL
         {
             optionsBuilder.UseSqlServer(Config.Get().SqlConnection);
             optionsBuilder.UseLazyLoadingProxies();
+            optionsBuilder.EnableSensitiveDataLogging();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
