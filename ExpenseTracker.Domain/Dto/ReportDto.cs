@@ -12,11 +12,11 @@ namespace ExpenseTracker.Domain.Dto
         public DateTime BeginDate { get; set; }
         public DateTime EndDate { get; set; }
         public ReportType ReportType { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedOn { get; set; }
 
         public ReportDto()
         {
-            CreatedAt = DateTime.Now;
+            CreatedOn = DateTime.Now;
         }
 
         public decimal TotalCost

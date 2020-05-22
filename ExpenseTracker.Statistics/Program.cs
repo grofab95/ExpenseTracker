@@ -1,5 +1,8 @@
 ﻿using ExpenseTracker.Common;
+using ExpenseTracker.Statistics.Common;
+using ExpenseTracker.Statistics.Managers;
 using System;
+using System.Collections.Generic;
 
 namespace ExpenseTracker.Statistics
 {
@@ -9,26 +12,35 @@ namespace ExpenseTracker.Statistics
         {
             try
             {
-                Logger.Log("Statistics module is running ...");
+                Logger.Log("Statistic module is starting ...");
+
                 var dataCollector = new StatsDataCollector();
-                var statsData = dataCollector.CollectDailyStats();
 
-                if (statsData == null)
-                {
-                    Logger.Log("No current costs.");
-                    return;
-                }
-
-                var reportBuilder = new ReportBuilder(statsData);
-                var emailSubject = $"Dzienny raport wydatków - {statsData.BeginDate.ToString("dd/MM")}";
-                var report = reportBuilder.BuildReport(emailSubject);
-                reportBuilder.SendReport(report);
+                var managers = GetReportManagers(dataCollector);
+                StartManagers(managers);
             }
             catch (Exception ex)
             {
                 Logger.Log($"[STATISTICS] - {ex.Message}", LogLevel.ERROR);
-                Logger.Log(ex, true);
             }
+        }
+
+        private static void StartManagers(List<IReportManager> managers)
+        {
+            foreach (var manager in managers)
+            {
+                manager.PocessReport();
+            }
+        }
+
+        private static List<IReportManager> GetReportManagers(StatsDataCollector dataCollector)
+        {
+            return new List<IReportManager>
+            {
+                new DailyReportManager(dataCollector),
+                new WeeklyReportManager(dataCollector),
+                new MonthlyReportManager(dataCollector)
+            };
         }
     }
 }

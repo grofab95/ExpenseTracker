@@ -13,7 +13,7 @@ namespace ExpenseTracker.MailGate
 
         public EmailBodyBuilder()
         {
-            _templatesPath = Config.Get().MailConfig.TemplatesPath;
+            _templatesPath = Config.Get.MailConfig.TemplatesPath;
         }
 
         private string GetTemplate(ReportType name)
@@ -42,7 +42,7 @@ namespace ExpenseTracker.MailGate
             emailBody = emailBody.Replace("[DATE]", reportDto.BeginDate.ToString("dd/MM/yyyy"));
             emailBody = emailBody.Replace("[TOTAL_COST]", $"{reportDto.TotalCost}zł");
             emailBody = emailBody.Replace("[COSTS]", costsList);
-            emailBody = emailBody.Replace("[CREATED_AT]", reportDto.CreatedAt.ToString("dd/MM/yyyy HH:mm"));
+            emailBody = emailBody.Replace("[CREATED_AT]", reportDto.CreatedOn.ToString("dd/MM/yyyy HH:mm"));
 
             return emailBody;
         }

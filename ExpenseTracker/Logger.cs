@@ -19,7 +19,6 @@ namespace ExpenseTracker.Common
         public static void Log(string source, LogLevel logLevel = LogLevel.INFO)
         {
             var actualDate = DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss");
-            var messagse = $"[{logLevel}] {actualDate} -> {source}";
             var message = $"{actualDate} | {logLevel} -> {source}";
 
             WriteToConsole(message, logLevel);
@@ -29,7 +28,6 @@ namespace ExpenseTracker.Common
         public static void Log<T>(string source, LogLevel logLevel = LogLevel.INFO)
         {
             var actualDate = DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss");
-            var message2 = $"[{logLevel}] {actualDate} ({typeof(T).Name}) -> {source}";
             var message = $"{actualDate} | {logLevel} ({typeof(T).Name}) ->  {source}";
 
             var coloredConsole = !(typeof(T).Name.Contains("Component", StringComparison.InvariantCultureIgnoreCase));
@@ -45,11 +43,11 @@ namespace ExpenseTracker.Common
 
             if (fullException)
             {
-                message = $"[{LogLevel.ERROR}] {actualDate} -> {Environment.NewLine}          {exception.ToString()}";
+                message = $"{actualDate} | {LogLevel.ERROR} -> {Environment.NewLine}          {exception.ToString()}";
             }
             else
             {
-                message = $"[{LogLevel.ERROR}] {actualDate} -> {exception.Message}";
+                message = $"{actualDate} | {LogLevel.ERROR} -> {exception.Message}";
             }
 
 
@@ -64,11 +62,11 @@ namespace ExpenseTracker.Common
 
             if (fullException)
             {
-                message = $"[{LogLevel.ERROR}] {actualDate} ({typeof(T).Name}) -> {Environment.NewLine}          {exception.ToString()}";
+                message = $"{actualDate} | {LogLevel.ERROR} ({typeof(T).Name}) -> {Environment.NewLine}          {exception.ToString()}";
             }
             else
             {
-                message = $"[{LogLevel.ERROR}] {actualDate} ({typeof(T).Name}) -> {exception.Message}";
+                message = $"{actualDate} | {LogLevel.ERROR} ({typeof(T).Name}) -> {exception.Message}";
             }
 
             var coloredConsole = !(typeof(T).Name.Contains("Component", StringComparison.InvariantCultureIgnoreCase));

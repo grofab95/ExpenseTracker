@@ -14,7 +14,7 @@ namespace ExpenseTracker.SQL
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(Config.Get().SqlConnection);
+            optionsBuilder.UseSqlServer(Config.Get.SqlConnection);
             optionsBuilder.UseLazyLoadingProxies();
             optionsBuilder.EnableSensitiveDataLogging();
         }

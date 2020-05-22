@@ -11,7 +11,7 @@ namespace ExpenseTracker.Web
         {
             try
             {
-                var config = Config.Get();
+                var config = Config.Get;
                 CreateHostBuilder(args, config).Build().Run();
             }
             catch (Exception ex)

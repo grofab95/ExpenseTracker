@@ -19,7 +19,7 @@ namespace ExpenseTracker.MailGate
         {
             try
             {
-                var config = Config.Get();
+                var config = Config.Get;
                 var fromAddress = new MailAddress(config.MailConfig.Email, "Expense Tracker");
                 var toAddress = new MailAddress(_emailFactors.Recipient, "To Name");
 

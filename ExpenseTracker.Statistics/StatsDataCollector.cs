@@ -18,13 +18,13 @@ namespace ExpenseTracker.Statistics
 
         public ReportDto CollectDailyStats()
         {
-            Logger.Log("Daily costs are collecting ...");
+            Logger.Log("- daily costs are collecting");
 
             var actualDate = DateTime.Now;
             var costs = _context.Costs.Where(x => x.CreatedAt.Day == actualDate.Day - 1).ToList();
 
             if (costs.Count == 0)
-                return null;
+                return null; 
 
             return new ReportDto
             {

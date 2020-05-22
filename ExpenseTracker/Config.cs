@@ -11,9 +11,17 @@ namespace ExpenseTracker.Common
         public string ServerPort { get; set; }
         public string Token { get; set; }
         public MailConfig MailConfig { get; set; }
+        public string ReportEmailRecipient { get; set; }
 
+        public static Config Get
+        {
+            get
+            {
+                return GetConfig();
+            }
+        }
 
-        public static Config Get()
+        private static Config GetConfig()
         {
             var configPath = "D:\\Code\\ExpenseTracker\\config.json";
 

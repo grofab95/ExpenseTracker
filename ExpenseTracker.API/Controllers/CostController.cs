@@ -26,7 +26,7 @@ namespace ExpenseTracker.API.Controllers
         {
             try
             {
-                if (string.IsNullOrEmpty(addCostDto.Token) || addCostDto.Token != Config.Get().Token)
+                if (string.IsNullOrEmpty(addCostDto.Token) || addCostDto.Token != Config.Get.Token)
                     throw new Exception("Access Denied!");
 
                 _costDao.AddCost(_mapper.Map<Cost>(addCostDto));
