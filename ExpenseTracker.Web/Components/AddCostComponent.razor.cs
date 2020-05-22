@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 namespace ExpenseTracker.Web.Components
@@ -38,7 +39,10 @@ namespace ExpenseTracker.Web.Components
         protected override void OnInitialized()
         {
             _costs = GetExistedCosts();
-            _categories = categoryDao.GetAll().ToList();
+            _categories = categoryDao.GetAll()
+                .OrderByDescending(x => x.Costs.Count())
+                .ToList();
+
             _names = nameDao.GetAll().ToList();
             _selectedCost = _costs.FirstOrDefault();
 
