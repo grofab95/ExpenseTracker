@@ -1,24 +1,32 @@
-﻿using ExpenseTracker.Domain.Dto;
+﻿using ExpenseTracker.Common;
+using ExpenseTracker.Domain.Dto;
 using ExpenseTracker.Domain.Enums;
 using ExpenseTracker.Statistics.Common;
-using System;
 
 namespace ExpenseTracker.Statistics.Managers
 {
-    public class WeeklyReportManager : ReportManager, IReportManager
+    public class WeeklyReportManager : ReportManager
     {
-        public WeeklyReportManager(StatsDataCollector dataCollector) : base(ReportType.Monthly)
-        {
-        }
+        private StatsDataCollector _statsDataCollector;
 
-        public void PocessReport()
+        public WeeklyReportManager(StatsDataCollector dataCollector) : base(ReportType.Weekly)
         {
-            throw new NotImplementedException();
+            _statsDataCollector = dataCollector;
         }
 
         protected override ReportDto GetReportData()
         {
-            throw new NotImplementedException();
+            Logger.Log("Weekly report is building ...");
+
+            var dailyData = _statsDataCollector.CollectWeeklyStats();
+
+            if (dailyData == null)
+            {
+                Logger.Log("No weekly costs.");
+                return null;
+            }
+
+            return dailyData;
         }
     }
 }

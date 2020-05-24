@@ -3,12 +3,11 @@ using ExpenseTracker.Domain.Dto;
 using ExpenseTracker.Domain.Enums;
 using ExpenseTracker.MailGate;
 using ExpenseTracker.MailGate.Dto;
-using ExpenseTracker.Statistics.Helpers;
 using System;
 
 namespace ExpenseTracker.Statistics.Common
 {
-    public abstract class ReportManager
+    public abstract class ReportManager : IReportManager
     {
         private EmailBodyBuilder _emailBodyBuilder;
         private ReportType _reportType;
@@ -19,9 +18,23 @@ namespace ExpenseTracker.Statistics.Common
             _emailBodyBuilder = new EmailBodyBuilder();
         }
 
+        public void PocessReport()
+        {
+            if (!IsTimeToRun())
+                return;
+
+            var data = GetReportData();
+            if (data == null)
+                return;
+
+            var email = BuildReportEmail(data);
+
+            SendReportEmail(email);
+        }
+
         protected abstract ReportDto GetReportData();     
 
-        protected bool IsTimeToRun()
+        private bool IsTimeToRun()
         {
             var actualDate = DateTime.Now;
 
@@ -40,10 +53,10 @@ namespace ExpenseTracker.Statistics.Common
             throw new Exception("Report type not implemented.");
         }
 
-        protected EmailFactors BuildReportEmail(ReportDto reportDto)
+        private EmailFactors BuildReportEmail(ReportDto reportDto)
         {
             var reportName = Translator.ReportTypeToPolish(_reportType);
-            var emailBody = _emailBodyBuilder.BuildReportEmailBody(reportDto);
+            var emailBody = _emailBodyBuilder.BuildReportEmailBody(reportDto, _reportType);
 
             var reportDate = _reportType == ReportType.Daily
                 ? reportDto.BeginDate.ToString("dd/MM")
@@ -57,7 +70,7 @@ namespace ExpenseTracker.Statistics.Common
             };
         }
 
-        protected void SendReportEmail(EmailFactors email)
+        private void SendReportEmail(EmailFactors email)
         {
             Logger.Log("Report is sending ...");
             var emailService = new EmailService(email);

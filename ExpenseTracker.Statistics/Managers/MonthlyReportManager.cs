@@ -1,25 +1,32 @@
-﻿using ExpenseTracker.Domain.Dto;
+﻿using ExpenseTracker.Common;
+using ExpenseTracker.Domain.Dto;
 using ExpenseTracker.Domain.Enums;
-using ExpenseTracker.MailGate.Dto;
 using ExpenseTracker.Statistics.Common;
-using System;
 
 namespace ExpenseTracker.Statistics.Managers
 {
-    public class MonthlyReportManager : ReportManager, IReportManager
+    public class MonthlyReportManager : ReportManager
     {
+        private StatsDataCollector _statsDataCollector;
+
         public MonthlyReportManager(StatsDataCollector dataCollector) : base(ReportType.Monthly)
         {
-        }
-
-        public void PocessReport()
-        {
-            throw new NotImplementedException();
+            _statsDataCollector = dataCollector;
         }
 
         protected override ReportDto GetReportData()
         {
-            throw new NotImplementedException();
+            Logger.Log("Monthly report is building ...");
+
+            var dailyData = _statsDataCollector.CollectMonthlyStats();
+
+            if (dailyData == null)
+            {
+                Logger.Log("No monthly costs.");
+                return null;
+            }
+
+            return dailyData;
         }
     }
 }

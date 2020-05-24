@@ -20,29 +20,67 @@ namespace ExpenseTracker.Statistics
         {
             Logger.Log("- daily costs are collecting");
 
-            var actualDate = DateTime.Now;
-            var costs = _context.Costs.Where(x => x.CreatedAt.Day == actualDate.Day - 1).ToList();
+            var now = DateTime.Now;
+            var costs = _context.Costs.Where(x => x.CreatedAt.Day == now.Day - 1).ToList();
 
             if (costs.Count == 0)
-                return null; 
+                return null;
+
+            now = now.AddDays(-1);
 
             return new ReportDto
             {
                 Costs = costs,
-                BeginDate = DateTime.Now.AddDays(-1),
-                EndDate = DateTime.Now.AddDays(-1),
+                BeginDate = new DateTime(now.Year, now.Month, now.Day),
+                EndDate = new DateTime(now.Year, now.Month, now.Day + 1),
                 ReportType = ReportType.Daily
             };
         }
 
         public ReportDto CollectWeeklyStats()
         {
-            throw new NotImplementedException();
+            Logger.Log("- weekly costs are collecting");
+
+            var now = DateTime.Now;
+
+            var until = new DateTime(now.Year, now.Month, now.Day);
+            var since = until.AddDays(-7);
+
+            var costs = _context.Costs.Where(x => x.CreatedAt >= since && x.CreatedAt < until).OrderByDescending(y => y.Amount).ToList();
+
+            if (costs.Count == 0)
+                return null;
+
+            return new ReportDto
+            {
+                Costs = costs,
+                BeginDate = since,
+                EndDate = until,
+                ReportType = ReportType.Daily
+            };
         }
 
         public ReportDto CollectMonthlyStats()
         {
-            throw new NotImplementedException();
+            Logger.Log("- monthly costs are collecting");
+
+            var now = DateTime.Now;
+
+            var until = new DateTime(now.Year, now.Month, now.Day);
+            var since = until.AddMonths(-1);
+
+            var costs = _context.Costs.Where(x => x.CreatedAt >= since && x.CreatedAt < until).ToList();
+
+            if (costs.Count == 0)
+                return null;
+
+            return new ReportDto
+            {
+                Costs = costs,
+                BeginDate = since,
+                EndDate = until,
+                ReportType = ReportType.Daily
+            };
         }
     }
 }

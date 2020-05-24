@@ -2,6 +2,7 @@
 using ExpenseTracker.Common;
 using ExpenseTracker.Domain.Entities;
 using ExpenseTracker.SQL;
+using ExpenseTracker.Statistics;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -81,12 +82,10 @@ namespace ExpenseTracker.ConsoleApp
         //    _context.SaveChanges();
         //}
 
-        static void Main()
+        static void LoggerTests()
         {
-            //CategoriesRefiller();
-
-
             Logger.Log<Program>($"Starting system ...");
+
 
             //try
             //{
@@ -100,7 +99,7 @@ namespace ExpenseTracker.ConsoleApp
             //    Logger.Log(ex, true);
             //    Logger.Log<Program>(ex, true);
             //}
-            
+
             for (int i = 0; i < 5; i++)
             {
                 var level = (i % 2 == 0) ? LogLevel.INFO : LogLevel.ERROR;
@@ -135,6 +134,30 @@ namespace ExpenseTracker.ConsoleApp
 
             //var colors = new string[] { "red", "black", "orange", "yellow" };
             //Log.Information($"Colors: {colors}");
+        }
+
+        static void Main()
+        {
+            var dataCollector = new StatsDataCollector();
+            var data = dataCollector.CollectMonthlyStats();
+
+            _ = true;
+
+
+            var positions = data.Costs
+                .OrderByDescending(o => o.Amount)
+                .GroupBy(x => new { x.FullName, x.Amount })
+                .Select(y => new 
+                {
+                    Category = y.Select(q => q.Category).First(),
+                    Name = y.Select(q => q.Name).First(),
+                    FullName = y.Select(q => q.FullName).First(),
+                    Cost = y.Key.Amount,
+                    Poss = y.Count(),
+                    Total = y.Sum(q => q.Amount)
+                })
+                .ToList();
+
         }
     }
 }

@@ -1,12 +1,11 @@
 ﻿using ExpenseTracker.Common;
 using ExpenseTracker.Domain.Dto;
 using ExpenseTracker.Domain.Enums;
-using ExpenseTracker.SQL;
 using ExpenseTracker.Statistics.Common;
 
 namespace ExpenseTracker.Statistics.Managers
 {
-    public class DailyReportManager : ReportManager, IReportManager
+    public class DailyReportManager : ReportManager
     {
         private StatsDataCollector _statsDataCollector;
 
@@ -15,26 +14,15 @@ namespace ExpenseTracker.Statistics.Managers
             _statsDataCollector = dataCollector;
         }
 
-        public void PocessReport()
-        {
-            var data = GetReportData();
-            if (data == null)
-                return;
-
-            var email = BuildReportEmail(data);
-
-            SendReportEmail(email);
-        }
-
         protected override ReportDto GetReportData()
         {
-            Logger.Log("Report is building ...");
+            Logger.Log("Daily report is building ...");
 
             var dailyData = _statsDataCollector.CollectDailyStats();
 
             if (dailyData == null)
             {
-                Logger.Log("No current costs.");
+                Logger.Log("No daily costs.");
                 return null;
             }
 

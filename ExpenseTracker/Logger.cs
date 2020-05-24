@@ -14,6 +14,8 @@ namespace ExpenseTracker.Common
 
     public class Logger
     {
+        private static string actualDate = DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss");
+
         private static readonly string _folderPath = $"{Directory.GetCurrentDirectory()}\\logs";
 
         public static void Log(string source, LogLevel logLevel = LogLevel.INFO)
@@ -27,7 +29,6 @@ namespace ExpenseTracker.Common
 
         public static void Log<T>(string source, LogLevel logLevel = LogLevel.INFO)
         {
-            var actualDate = DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss");
             var message = $"{actualDate} | {logLevel} ({typeof(T).Name}) ->  {source}";
 
             var coloredConsole = !(typeof(T).Name.Contains("Component", StringComparison.InvariantCultureIgnoreCase));
@@ -38,7 +39,6 @@ namespace ExpenseTracker.Common
 
         public static void Log(Exception exception, bool fullException = false)
         {
-            var actualDate = DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss");
             var message = string.Empty;
 
             if (fullException)
@@ -57,7 +57,6 @@ namespace ExpenseTracker.Common
 
         public static void Log<T>(Exception exception, bool fullException = false)
         {
-            var actualDate = DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss");
             var message = string.Empty;
 
             if (fullException)

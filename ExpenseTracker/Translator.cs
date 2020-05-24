@@ -1,7 +1,7 @@
 ﻿using ExpenseTracker.Domain.Enums;
 using System;
 
-namespace ExpenseTracker.Statistics.Helpers
+namespace ExpenseTracker.Common
 {
     public class Translator
     {
