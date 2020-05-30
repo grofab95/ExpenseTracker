@@ -27,7 +27,7 @@ namespace ExpenseTracker.Common
 
             if (Environment.MachineName == "SERVER2019")
             {
-                configPath = "D:\\APP_DEPLOY\\ExpenseTracker\\config.json";
+                configPath = "P:\\APP_DEPLOY\\ExpenseTracker\\config.json";
             }
 
             if (!File.Exists(configPath))
