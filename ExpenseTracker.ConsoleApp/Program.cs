@@ -29,6 +29,7 @@ namespace ExpenseTracker.ConsoleApp
                 new Category { Name = "Jedzenie-Praca" },
                 new Category { Name = "Samochód" },
                 new Category { Name = "Studia" },
+                new Category { Name = "TEST" }
             };
 
             var listToAdd = new List<Category>();
@@ -87,18 +88,18 @@ namespace ExpenseTracker.ConsoleApp
             Logger.Log<Program>($"Starting system ...");
 
 
-            //try
-            //{
-            //    var y = 2 - 2;
-            //    var x = 2 / y;
-            //}
-            //catch (Exception ex)
-            //{
-            //    Logger.Log(ex);
-            //    Logger.Log<Program>(ex);
-            //    Logger.Log(ex, true);
-            //    Logger.Log<Program>(ex, true);
-            //}
+            try
+            {
+                var y = 2 - 2;
+                var x = 2 / y;
+            }
+            catch (Exception ex)
+            {
+                Logger.Log(ex);
+                Logger.Log<Program>(ex);
+                Logger.Log(ex, true);
+                Logger.Log<Program>(ex, true);
+            }
 
             for (int i = 0; i < 5; i++)
             {
@@ -110,27 +111,27 @@ namespace ExpenseTracker.ConsoleApp
             }
 
 
-            //while (true)
-            //{
-            //    var colors = new List<Color> { Color.Blue, Color.BlueViolet, Color.AliceBlue, Color.CadetBlue, 
-            //        Color.CornflowerBlue, Color.SlateBlue, Color.SteelBlue, Color.RoyalBlue };
-            //    var r = new Random();
-            //    var styleSheet = new StyleSheet(Color.White);
+            while (true)
+            {
+                var colors = new List<Color> { Color.Blue, Color.BlueViolet, Color.AliceBlue, Color.CadetBlue,
+                    Color.CornflowerBlue, Color.SlateBlue, Color.SteelBlue, Color.RoyalBlue };
+                var r = new Random();
+                var styleSheet = new StyleSheet(Color.White);
 
-            //    var c = colors[r.Next(0, colors.Count)];
+                var c = colors[r.Next(0, colors.Count)];
 
-            //    styleSheet.AddStyle("TESTOWA WIDOMOSC", c);
+                styleSheet.AddStyle("TESTOWA WIDOMOSC", c);
 
-            //    Console.WriteLineStyled($"TESTOWA WIDOMOSC - {c.ToString()}", styleSheet);
+                Console.WriteLineStyled($"TESTOWA WIDOMOSC - {c.ToString()}", styleSheet);
 
-            //    Thread.Sleep(500);
-            //}
+                Thread.Sleep(500);
+            }
 
 
 
             //var logger = new LogTests();
             //Log.Information($"App started ... {DateTime.Now.ToShortDateString()}");
-            ////logger.Start();
+            //logger.Start();
 
             //var colors = new string[] { "red", "black", "orange", "yellow" };
             //Log.Information($"Colors: {colors}");
@@ -138,6 +139,11 @@ namespace ExpenseTracker.ConsoleApp
 
         static void Main()
         {
+
+            LoggerTests();
+            CategoriesRefiller();
+
+
             var dataCollector = new StatsDataCollector();
             var data = dataCollector.CollectMonthlyStats();
 

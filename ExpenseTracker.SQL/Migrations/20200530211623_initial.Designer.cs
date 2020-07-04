@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ExpenseTracker.SQL.Migrations
 {
     [DbContext(typeof(ExpenseTrackerContext))]
-    [Migration("20200519204056_dev-initial")]
-    partial class devinitial
+    [Migration("20200530211623_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

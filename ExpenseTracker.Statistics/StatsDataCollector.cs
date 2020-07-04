@@ -21,7 +21,11 @@ namespace ExpenseTracker.Statistics
             Logger.Log("- daily costs are collecting");
 
             var now = DateTime.Now;
-            var costs = _context.Costs.Where(x => x.CreatedAt.Day == now.Day - 1).ToList();
+            var costs = _context.Costs
+                .Where(x => x.CreatedAt.Day == now.Day - 1 &&
+                            x.CreatedAt.Month == now.Month &&
+                            x.CreatedAt.Year == now.Year)
+                .ToList();
 
             if (costs.Count == 0)
                 return null;

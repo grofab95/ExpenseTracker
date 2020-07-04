@@ -17,8 +17,7 @@ namespace ExpenseTracker.Web
             catch (Exception ex)
             {
                 Common.Logger.Log($"An exception occurred while starting web service: {ex.Message}", LogLevel.ERROR);
-            }
-           
+            }           
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args, Config config) =>
