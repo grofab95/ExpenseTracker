@@ -6,8 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ExpenseTracker.SQL\ExpenseTracker.SQL.csproj" />
-    <ProjectReference Include="..\ExpenseTracker.Statistics\ExpenseTracker.Statistics.csproj" />
     <ProjectReference Include="..\ExpenseTracker\ExpenseTracker.Common.csproj" />
   </ItemGroup>
 

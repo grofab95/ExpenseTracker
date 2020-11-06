@@ -6,8 +6,11 @@
 
   <ItemGroup>
     <Folder Include="Adapters\" />
-    <Folder Include="Entities\" />
     <Folder Include="Enums\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ExpenseTracker\ExpenseTracker.Common.csproj" />
   </ItemGroup>
 
 </Project>

@@ -5,9 +5,4 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ExpenseTracker.MailGate\ExpenseTracker.MailGate.csproj" />
-    <ProjectReference Include="..\ExpenseTracker.SQL\ExpenseTracker.SQL.csproj" />
-  </ItemGroup>
-
 </Project>

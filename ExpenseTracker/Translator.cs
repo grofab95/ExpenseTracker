@@ -1,28 +1,28 @@
-﻿using ExpenseTracker.Domain.Enums;
-using System;
+﻿//using ExpenseTracker.Domain.Enums;
+//using System;
 
-namespace ExpenseTracker.Common
-{
-    public class Translator
-    {
-        public static string ReportTypeToPolish(ReportType reportType)
-        {
-            switch (reportType)
-            {
-                case ReportType.Daily:
-                    return "Dzienny";
+//namespace ExpenseTracker.Common
+//{
+//    public class Translator
+//    {
+//        public static string ReportTypeToPolish(ReportType reportType)
+//        {
+//            switch (reportType)
+//            {
+//                case ReportType.Daily:
+//                    return "Dzienny";
 
-                case ReportType.Weekly:
-                    return "Tygodniowy";
+//                case ReportType.Weekly:
+//                    return "Tygodniowy";
 
-                case ReportType.Monthly:
-                    return "Miesięczny";
+//                case ReportType.Monthly:
+//                    return "Miesięczny";
 
-                default:
-                    break;
-            }
+//                default:
+//                    break;
+//            }
 
-            throw new Exception("Report translate not implemented.");
-        }
-    }
-}
+//            throw new Exception("Report translate not implemented.");
+//        }
+//    }
+//}
